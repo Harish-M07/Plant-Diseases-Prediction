@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plant Disease Detection</title>
+
+    <style>
+        /* Resetting default browser styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body styling */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #32CD32, #228B22);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Main container styling */
+        .container {
+            width: 90%;
+            max-width: 500px;
+            background-color: #fff;
+            padding: 40px 30px;
+            border-radius: 10px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        /* Header styling */
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #2E8B57;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+        }
+
+        /* Input file styling */
+        input[type="file"] {
+            width: 100%;
+            padding: 10px;
+            border: 2px dashed #228B22;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+            margin-top: 15px;
+            cursor: pointer;
+            transition: background-color 0.3s, border 0.3s;
+        }
+
+        input[type="file"]:hover {
+            background-color: #e0ffe0;
+            border-color: #32CD32;
+        }
+
+        /* Button styling */
+        button {
+            width: 100%;
+            padding: 15px;
+            margin-top: 20px;
+            background-color: #32CD32;
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.1s;
+        }
+
+        button:hover {
+            background-color: #228B22;
+            transform: scale(1.02);
+        }
+
+        /* Prediction result section */
+        .prediction {
+            margin-top: 30px;
+            font-size: 1.2rem;
+            background-color: #f4f4f4;
+            padding: 15px;
+            border-radius: 8px;
+            color: #444;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .prediction strong {
+            color: #32CD32;
+        }
+
+        /* Footer link styling (optional) */
+        footer {
+            margin-top: 30px;
+            font-size: 0.85rem;
+            color: #666;
+        }
+
+        footer a {
+            color: #32CD32;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        footer a:hover {
+            color: #228B22;
+        }
+
+        /* Animation for page load */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Plant Disease Detection</h1>
+        <form action="/" method="POST" enctype="multipart/form-data">
+            <input type="file" name="file" accept="image/*" required><br>
+            <button type="submit">Predict</button>
+        </form>
+
+        {% if prediction %}
+        <div class="prediction">
+            <p><strong>Prediction:</strong> {{ prediction }}</p>
+        </div>
+        {% endif %}
+        
+        <footer>
+            <p>Powered by <a href="#">Plant AI</a></p>
+        </footer>
+    </div>
+</body>
+</html>
